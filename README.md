@@ -8,6 +8,14 @@ parcel and listing management, lease scheduling with conflict detection,
 and tenancy records — run by a qualified operator so a local agency keeps
 its own property and tenancy data instead of renting a closed CRM SaaS.
 
+## Robotics premise
+
+All cloud-itonami verticals are designed on the premise that a **robot performs
+the physical domain work**. Here a showing, cleaning and inspection robot performs the physical property work under an actor that proposes
+actions and an independent **Property Governor** that gates them. The governor never
+dispatches hardware itself; `:high`/`:safety-critical` actions require
+human sign-off.
+
 ## Core Contract
 
 ```text
