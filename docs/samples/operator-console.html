@@ -1,0 +1,16 @@
+<html><head><meta charset="utf-8"><title>cloud-itonami · real-estate</title><style>table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.ok { color: #137a3f; }
+body { font-family: system-ui,-apple-system,sans-serif; margin: 0; color: #1a1a1a; background: #fafafa; }
+header.bar { display: flex; align-items: center; gap: 12px; padding: 12px 20px; background: #fff; border-bottom: 1px solid #e5e5e5; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #f0f0f0; }
+h2 { margin-top: 0; font-size: 15px; }
+td.amt { font-variant-numeric: tabular-nums; text-align: right; }
+.warn { color: #b25c00; background: #fff8e1; padding: 2px 6px; border-radius: 4px; }
+main { max-width: 980px; margin: 24px auto; padding: 0 20px; }
+header.bar h1 { font-size: 18px; margin: 0; font-weight: 600; }
+.muted { color: #888; }
+.critical { color: #fff; background: #b3261e; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+.card { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+.err { color: #b3261e; background: #fbe9e7; padding: 2px 6px; border-radius: 4px; }
+th { font-weight: 600; color: #555; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+header.bar .badge { margin-left: auto; font-size: 12px; color: #666; }</style></head><body><header class="bar"><h1>Real-Estate Agency — Operator Console</h1><span class="badge">read-only · governor-gated</span></header><main><section class="card"><h2>Parcels</h2><table><thead><tr><th>ID</th><th>Address</th><th class="amt">Area (m²)</th><th>Zoning</th></tr></thead><tbody><tr><td>P1</td><td>1 Main St</td><td class="amt">—</td><td>unspecified</td></tr></tbody></table></section><section class="card"><h2>Listings</h2><table><thead><tr><th>ID</th><th>Parcel</th><th>Type</th><th class="amt">Price</th><th>Agent</th></tr></thead><tbody><tr><td>L1</td><td>P1</td><td>rent</td><td class="amt">1000 USD</td><td>—</td></tr></tbody></table></section><section class="card"><h2>Leases (term-overlap checked)</h2><table><thead><tr><th>ID</th><th>Parcel</th><th>Tenant</th><th>Landlord</th><th class="amt">Rent</th><th>Term</th><th>Overlap</th></tr></thead><tbody><tr><td>LS1</td><td>P1</td><td>tenant</td><td>landlord</td><td class="amt">1000 USD</td><td>2026-01-01 → 2026-12-31</td><td><span class="ok">clear</span></td></tr></tbody></table></section></main></body></html>

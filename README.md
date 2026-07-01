@@ -32,6 +32,8 @@ No automated advice can publish a listing without an identified parcel,
 overlap an existing lease term, or release a tenancy record without governor
 approval and audit evidence.
 
+A live sample of the operator console is rendered in [docs/samples/operator-console.html](docs/samples/operator-console.html) — pure-data HTML output of the kotoba-lang capability UI.
+
 ## Capability layer
 
 Resolves via [`kotoba-lang/industry`](https://github.com/kotoba-lang/industry)
