@@ -4,8 +4,9 @@
  :itonami.blueprint/domain :property/real-estate-agency
  :itonami.blueprint/license "AGPL-3.0-or-later"
  :itonami.blueprint/social-impact [:housing-access :tenancy-protection :transparency]
- :itonami.blueprint/governor :property-governor
+ :itonami.blueprint/governor :realtor-governor
  :itonami.blueprint/required-technologies [:property :identity :forms :dmn :bpmn :audit-ledger]
  :itonami.blueprint/optional-technologies [:optimization]
  :itonami.blueprint/status :public-oss
- :itonami.blueprint/robotics true}
+ :itonami.blueprint/robotics true
+ :itonami.blueprint/maturity :implemented}

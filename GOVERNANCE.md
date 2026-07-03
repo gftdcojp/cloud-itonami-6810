@@ -7,10 +7,13 @@ real-estate agency.
 Maintainers may merge changes that preserve these invariants:
 - listings without an identified parcel can never publish.
 - overlapping lease terms can never be committed.
-- the Property Governor remains independent of the advisor.
-- hard policy violations (force-overlap, unauthorized disclosure) cannot be overridden by human approval.
-- every listing, lease, handover and disclose path is auditable.
-- tenant personal data and credentials stay outside Git.
+- the RealtorGovernor remains independent of the Realtor-LLM advisor.
+- hard policy violations (force-overlap, unauthorized disclosure, fabricated
+  jurisdiction requirements, sanctions hit) cannot be overridden by human approval.
+- a closing/title-transfer recording or escrow-fund disbursement always
+  escalates to a human -- never automated, at any phase.
+- every listing, lease, handover, disclosure and closing path is auditable.
+- buyer/seller/tenant personal data and credentials stay outside Git.
 
 ## Decision Records
 Architecture decisions live in `docs/adr/`. Changes to the trust model, storage contract, public business model, operator certification or license should add or update an ADR.

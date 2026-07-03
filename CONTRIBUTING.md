@@ -5,18 +5,23 @@ bindings, policy tests, documentation and operator model.
 
 ## Development
 The capability layer lives in `kotoba-lang/property`. This repo holds the
-business blueprint and operator contracts.
+business blueprint, the Realtor-LLM ⊣ RealtorGovernor actor (`src/realty/`)
+and operator contracts.
 
 ```bash
-clojure -X:test
+clojure -M:dev:test
 clojure -M:lint
 ```
 
 ## Rules
-- Do not commit real tenant, parcel-owner or financial data.
-- Keep listings, leases and disclosures behind the Property Governor.
-- Treat property workflows as high-risk: add tests for parcel identity,
-  term-overlap, lease, disclosure and audit logging.
+- Do not commit real tenant, parcel-owner, buyer/seller or financial data.
+- Keep listings, leases, disclosures and closings behind the
+  RealtorGovernor -- a closing/escrow disbursement never bypasses it.
+- Treat property and closing workflows as high-risk: add tests for parcel
+  identity, term-overlap, lease, disclosure, sanctions/KYC and audit
+  logging.
+- Do not add a jurisdiction to `realty.facts/catalog` without a real,
+  citable official land-registry source.
 - Document any new business-model or operator assumption in `docs/`.
 
 ## Pull Requests
