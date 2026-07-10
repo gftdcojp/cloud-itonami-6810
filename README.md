@@ -135,8 +135,9 @@ Resolves via [`kotoba-lang/industry`](https://github.com/kotoba-lang/industry)
 | `src/realty/governor.cljc` | **RealtorGovernor** -- spec-basis · sanctions hold · document-complete · confidence floor · actuation gate |
 | `src/realty/phase.cljc` | **Phase 0→3** -- read-only → assisted intake → assisted assess/screen → supervised (closing always human) |
 | `src/realty/operation.cljc` | **OperationActor** -- langgraph-clj StateGraph |
+| `src/realty/corporate_intel.cljc` | optional cross-reference into [`cloud-itonami-isic-8291`](https://github.com/cloud-itonami/cloud-itonami-isic-8291)'s `:disclosure/screen-name` -- catches a party clean on every LOCAL field but flagged in 8291's own sourced PEP/sanctions data; wired into `screen-kyc` via an injected fn, default is a no-op so every prior caller's behavior is unchanged unless explicitly opted in |
 | `src/realty/sim.cljc` | demo driver |
-| `test/realty/*_test.clj` | governor contract · phase invariants · store parity · registry conformance · facts coverage |
+| `test/realty/*_test.clj` | governor contract · phase invariants · store parity · registry conformance · facts coverage · corporate-intelligence integration |
 
 ## Jurisdiction coverage (honest)
 

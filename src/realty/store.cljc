@@ -54,7 +54,14 @@
                  :listing-type :sale :status :intake}}
    :parties
    {"party-1" {:id "party-1" :name "山田 太郎" :role :seller :sanctions-hit? false :id-doc "passport-jp-****5678"}
-    "party-2" {:id "party-2" :name "J. Doe" :role :buyer :sanctions-hit? true :id-doc nil}}})
+    "party-2" {:id "party-2" :name "J. Doe" :role :buyer :sanctions-hit? true :id-doc nil}
+    ;; deliberately clean on EVERY local field (no :sanctions-hit?, has an
+    ;; id-doc) -- this name is shared with cloud-itonami-isic-8291's own
+    ;; demo data (a sanctions-flagged official), so it exists purely to
+    ;; prove realty.corporate-intel's cross-reference catches a hit this
+    ;; actor's local-only checks would otherwise miss entirely.
+    "party-9" {:id "party-9" :name "Jane Smith (demo)" :role :buyer
+               :sanctions-hit? false :id-doc "passport-uk-****5678"}}})
 
 ;; ----------------------------- shared closing logic -----------------------------
 
