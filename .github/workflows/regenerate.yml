@@ -1,0 +1,73 @@
+# Nightly regeneration -- rebuild docs/samples/operator-console.html
+# through the REAL actor (realty.render-html, driving
+# realty.operation/realty.governor/realty.store) and commit only when
+# the rendered console actually changed. Closes flagship checklist item
+# 2 (ADR-2607189300 at com-junkawasaki/root, Wave5 rollout ledger seq
+# 6): the repo's previous docs/samples/operator-console.html was a
+# hand-typed static placeholder (fabricated parcel/listing/lease rows,
+# referencing a `kotoba.property.ui` namespace that does not exist in
+# this repo's src/) -- this workflow replaces it with a real,
+# actor-driven build.
+#
+# JVM Clojure (clojure -M), not nbb -- this repo's whole actor stack is
+# JVM-only .cljc. Reusable template + adaptation notes:
+# com-junkawasaki/root 90-docs/business/scripts/
+# flagship-generator-template/. Differs from that template's checkout
+# list in one way: this repo's deps.edn has an EXTRA top-level
+# (non-aliased) dependency on cloud-itonami-isic-8291 (optional
+# realty.corporate-intel cross-reference), so classpath resolution
+# needs that sibling checked out too, at the exact relative path
+# deps.edn expects (../cloud-itonami-isic-8291) -- without it `clojure`
+# fails classpath construction before render_html.clj ever runs, even
+# though render_html.clj itself never requires realty.corporate-intel /
+# dossier.* directly.
+#
+# Fork note: this runs on the default GITHUB_TOKEN (contents: write).
+# If your org disables Actions, run `clojure -M:dev:render-html` from
+# any scheduler (see docs/operator-quickstart.md).
+name: regenerate-console
+on:
+  schedule:
+    - cron: '17 18 * * *'   # 03:17 JST nightly (off-minute on purpose)
+  workflow_dispatch: {}
+permissions:
+  contents: write
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: orgs/cloud-itonami/cloud-itonami-isic-6810
+      - uses: actions/checkout@v4
+        with: {repository: kotoba-lang/langchain, path: orgs/kotoba-lang/langchain}
+      - uses: actions/checkout@v4
+        with: {repository: kotoba-lang/langgraph, path: orgs/kotoba-lang/langgraph}
+      - uses: actions/checkout@v4
+        with: {repository: cloud-itonami/cloud-itonami-isic-8291, path: orgs/cloud-itonami/cloud-itonami-isic-8291}
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "21" }
+      - uses: DeLaGuardo/setup-clojure@13.0
+        with: { cli: latest }
+      - name: regenerate through the real actor
+        working-directory: orgs/cloud-itonami/cloud-itonami-isic-6810
+        run: clojure -M:dev:render-html
+      - name: verify (real output, not scaffolding)
+        working-directory: orgs/cloud-itonami/cloud-itonami-isic-6810
+        run: |
+          grep -q 'realty.render-html' docs/samples/operator-console.html
+          grep -q '<tbody>' docs/samples/operator-console.html
+          test "$(wc -l < docs/samples/operator-console.html)" -gt 30
+          echo "operator console sanity ok"
+      - name: commit when changed
+        working-directory: orgs/cloud-itonami/cloud-itonami-isic-6810
+        run: |
+          if ! git diff --quiet docs/; then
+            git config user.name "regenerate-console[bot]"
+            git config user.email "noreply@github.com"
+            git add docs/
+            git commit -m "chore(console): nightly regeneration through the real actor"
+            git push
+          else
+            echo "console unchanged"
+          fi
