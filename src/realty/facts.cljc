@@ -95,7 +95,26 @@
               :required-docs ["Contract for Sale of Land"
                              "Transfer form (NSW Form 01T)"
                              "Land tax clearance certificate"
-                             "Verification of Identity (VOI) evidence"]}})
+                             "Verification of Identity (VOI) evidence"]}
+   "CAN-ON" {:name "Canada -- Ontario (exemplar; federalism note below)"
+             :owner-authority "Real Estate Council of Ontario (RECO)"
+             :legal-basis "Trust in Real Estate Services Act, 2002 (TRESA); O. Reg. 567/05 (General)"
+             :national-spec "RECO MyWeb registration portal (salesperson/broker/brokerage registration and renewal)"
+             :provenance "https://www.reco.on.ca/agents-and-brokerages/becoming-a-real-estate-agent"
+             :official-sources
+             {:registration-requirements "https://www.reco.on.ca/agents-and-brokerages/becoming-a-real-estate-agent"
+              :tresa-legislation-index "https://www.reco.on.ca/agents-and-brokerages/tresa-explained"
+              :trust-account-bulletin "https://www.reco.on.ca/agents-and-brokerages/reco-bulletins/reco-bulletin-8-1-unclaimed-money-in-the-real-estate-trust-account"
+              :ontario-e-laws-statute-page "https://www.ontario.ca/laws/statute/02r30"}
+             :notes "Canada has no federal real-estate regulator -- registration/licensing of agents and brokerages, and real-estate trust-account handling, is regulated per-province; Ontario (RECO) is a provincial exemplar, not a 'Canada' national authority. RECO's own site cites the Act's short title as 'Trust in Real Estate Services Act, 2002 (TRESA)' consistently across multiple pages (see :quotes below, verbatim, not a transcription error introduced here), and RECO's tresa-explained page states the Act 'and its associated regulations' include O. Reg. 567/05 (General), O. Reg. 579/05, O. Reg. 365/22 (Code of Ethics), O. Reg. 536/20 (Personal Real Estate Corporations) and O. Reg. 367/22 (Discipline Committee), linking the Act itself to ontario.ca's e-laws identifier '02r30'. That RECO page also states 'key changes ... took effect December 1, 2023.' ontario.ca's own e-laws pages (both /laws/statute/02r30 and /laws/statute/20t01) require client-side JavaScript to render body text and could not be directly text-extracted this session, so no specific chapter/schedule citation (e.g. an 'S.O. YYYY, c. NN' cite, or the prior Act's pre-TRESA name) is asserted here -- only what RECO's own fetched page text and links state. RECO is the delegated administering authority for this Act, cited the same way the existing USA-CA entry above cites its state regulator (dre.ca.gov) rather than raw statute text."
+             :quotes
+             {:registration-required "Real estate is a regulated profession in Ontario, so all real estate agents must be registered with the Real Estate Council of Ontario (RECO). RECO regulates the real estate brokerages and agents who trade in real estate in Ontario."
+              :trust-account-unclaimed-money "All unclaimed money held in trust for more than two years must be paid to RECO."}
+             :required-docs ["RECO registration certificate (salesperson or broker), current and in good standing"
+                             "Confirmation registrant is employed by a registered real estate brokerage (no independent trading permitted)"
+                             "Criminal Record and Judicial Matters Check (CRJMC), where required under RECO registration policy"
+                             "Real estate trust account transaction record for any deposit or other money received in trust"
+                             "Agreement of purchase and sale and trade record sheet supporting any trust-account entry"]}})
 
 (defn spec-basis
   "The jurisdiction's requirement map, or nil -- nil means NO spec-basis,
